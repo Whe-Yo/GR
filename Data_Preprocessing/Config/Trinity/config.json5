@@ -1,0 +1,66 @@
+{
+    dir_data: "../Data/Trinity/Source/Training_Data",
+    dir_save: "../Data/Trinity/Processed/Training_Data",
+
+    usingTrinity2Text: false,
+
+    name_files_train: ["Recording_001", "Recording_002", "Recording_003", "Recording_004", "Recording_005",
+                   "Recording_006", "Recording_007", "Recording_009", "Recording_010", "Recording_011",
+                   "Recording_012", "Recording_013", "Recording_014", "Recording_015", "Recording_016",
+                   "Recording_017", "Recording_018", "Recording_019", "Recording_020", "Recording_021",
+                   "Recording_022", "Recording_023"],
+    name_files_valid: ["Recording_001"],
+
+    name_files_test: ["TestSeq001", "TestSeq002", "TestSeq003", "TestSeq004", "TestSeq005", "TestSeq006",
+                      "TestSeq007", "TestSeq008", "TestSeq009", "TestSeq010",],
+
+//    name_files_train: ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7",
+//                    "2-1", "2-2", "2-3", "2-4", "2-5", "2-6",
+//                    "3-2", "3-3", "3-4", "3-5", "3-6", "3-7",
+//                    "4-1", "4-2", "4-3", "4-4", "4-5", "4-6"],
+//    name_files_valid: ["1-1_attention"],
+//
+//    name_files_test: ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6", "1-7",
+//                      "2-1", "2-2", "2-3", "2-4", "2-5", "2-6",
+//                      "3-2", "3-3", "3-4", "3-5", "3-6", "3-7",
+//                      "4-1", "4-2", "4-3", "4-4", "4-5", "4-6"],
+
+    fps: 20, // 20
+    sr: 48000,
+
+    dim_mel: 80, // 80
+    mel_filter_len: 2400,
+    mel_hop_len: 600,
+
+    joints_selected: ['Spine', 'Spine1', 'Spine2', 'Spine3', 'Neck', 'Neck1', 'Head',
+        'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand',
+//        'RightHandThumb1', 'RightHandThumb2', 'RightHandThumb3',
+//        'RightHandIndex1', 'RightHandIndex2', 'RightHandIndex3',
+//        'RightHandMiddle1', 'RightHandMiddle2', 'RightHandMiddle3',
+//        'RightHandRing1', 'RightHandRing2', 'RightHandRing3',
+//        'RightHandPinky1', 'RightHandPinky', 'RightHandPinky3',
+        'LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand',
+//        'LeftHandThumb1', 'LeftHandThumb2', 'LeftHandThumb3',
+//        'LeftHandIndex1', 'LeftHandIndex2', 'LeftHandIndex3',
+//        'LeftHandMiddle1', 'LeftHandMiddle2', 'LeftHandMiddle3',
+//        'LeftHandRing1', 'LeftHandRing2', 'LeftHandRing3',
+//        'LeftHandPinky1', 'LeftHandPinky', 'LeftHandPinky3',
+        'RightUpLeg', 'RightLeg', 'RightFoot', 'RightForeFoot', 'RightToeBase',
+        'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'LeftForeFoot', 'LeftToeBase'
+    ],
+
+    onset_bounds: [0.2, 0.5],
+
+    bvh_rotation_order: "ZXY",
+    bvh_root_joint: "Hips",
+
+    uniform_len: 10,  // 10, uniform_len = fps * 0.5
+
+    use_pos_enc: false,
+    dim_pos_enc : 16,
+
+    split_data: true,
+
+    num_blocks_per_clip: 10,
+    step: 8
+}

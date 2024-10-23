@@ -1,0 +1,55 @@
+# hardware
+device: 'cuda:0'
+#device: 'cuda'
+#device: 'cpu'
+
+# name
+name: 'model'
+
+# directory
+data_dir: './dataset/'
+train: 'train/'
+train_large: 'train_large/'
+val: 'val/'
+test: 'test/'
+
+# data preparation
+motion_downsample_fps: 20 # Trinity:20
+
+audio_onset_interval: [0.2, 0.5]
+audio_batch_size: 10
+audio_sample_rate: 16000 # 44100
+
+#wordembed_dim: 300
+#wordembed_path: pretrain/fasttext/crawl-300d-2M-subword.bin  # from https://fasttext.cc/docs/en/english-vectors.html
+#z_type: speaker  # speaker, random, none
+#lang_model: thirdparty/HA2G/data/fasttext/
+#n_poses: 34
+#motion_resampling_framerate: 15
+#n_pre_poses: 4
+#mean_dir_vec: [ 0.0154009, -0.9690125, -0.0884354, -0.0022264, -0.8655276, 0.4342174, -0.0035145, -0.8755367, -0.4121039, -0.9236511, 0.3061306, -0.0012415, -0.5155854,  0.8129665,  0.0871897, 0.2348464,  0.1846561,  0.8091402,  0.9271948,  0.2960011, -0.013189 ,  0.5233978,  0.8092403,  0.0725451, -0.2037076, 0.1924306,  0.8196916]
+
+textrecognize: True     # when no text data
+
+# training arguments
+manual_seed: 1777
+batch_size: 32
+window_size: 10         # D_M x fps
+step_size: 30           # (not used)
+lexicon_size: 200       # in paper... Trinity & Chinese: 50, TED: 100
+joint_size: 16          # upper body
+rotation_size: 6        # 6d matrix
+feature_size: 192       # lexeme feature
+category_size: 128      # generator category (not used)
+group_size: 64          # generator group (not used)
+
+lr: 0.0003
+beta_1: 0.9
+beta_2: 0.999
+weight_decay: 0.0003
+max_epochs: 30000        # 30000
+
+# step size
+log_every: 1000         # iter
+save_every: 1000        # epoch
+save_best_every: 10000

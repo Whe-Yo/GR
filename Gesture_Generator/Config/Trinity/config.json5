@@ -1,0 +1,40 @@
+{
+    dir_data: "../Data/Trinity/Processed/Training_Data",
+    dir_log: "./Training/Trinity",
+
+    device: "cuda:0",
+    batch_size: 512,
+    num_epoch: 1000,
+    checkpoint_save_num_epoch: 100,
+    valid_num_epoch: 10,
+
+    optimizer: {
+        name: "Adam",
+        lr: 0.0003,
+        betas: [
+            0.9,
+            0.999,
+        ],
+        eps: 1e-08,
+        weight_decay: 0,
+    },
+
+    network: {
+        name: "RNN",
+        hparams: {
+            aud_dim: 80,
+            aud_hid_dim: 64,
+            aud_embed_dim: 64,
+            lxm_dim: 312, // 192
+            rnn_hid_dim: 1024,
+            rnn_out_dim: 156, // 96
+            rnn_depth: 4
+        }
+    },
+
+    loss: {
+        rot: 1.0,
+        fgd: 1.0,
+        act: 0.01
+    },
+}
